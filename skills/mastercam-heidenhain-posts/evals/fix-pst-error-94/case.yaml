@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: fix-pst-error-94
+expected_outcome: |
+  The answer identifies that no2str() is used inside output lines (only allowed in string assignments), and fixes it by building the text in a string variable first (e.g. sser_cmt = " - HOEHE " + no2str(ser_h)) and outputting that variable, for both lines, keeping the rest of the postblock unchanged.
+context:
+  scaffold_script: place-files.sh

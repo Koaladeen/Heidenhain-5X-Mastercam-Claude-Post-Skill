@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mastercam Heidenhain Posts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Code+Pro:wght@400;500&display=swap">
+<style>
+/* Layout: printed technical manual - running header, numbered sections, contents column on wide screens */
+:root {
+  --paper: #ffffff;
+  --ink: #1d2125;
+  --ink-2: #4b535b;
+  --rule: #c9ced3;
+  --rule-light: #e4e7ea;
+  --link: #1f4e8c;
+  --code-bg: #f4f5f6;
+  --note-line: #1f4e8c;
+  --caution-line: #a15c00;
+  --caution-bg: #fbf6ee;
+  --f-text: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  --f-mono: "Source Code Pro", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16191c; --ink: #dfe3e6; --ink-2: #a3acb4; --rule: #3a4148; --rule-light: #2a3036;
+    --link: #8db4e8; --code-bg: #1e2226; --note-line: #8db4e8; --caution-line: #d99a3d; --caution-bg: #221d15;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16191c; --ink: #dfe3e6; --ink-2: #a3acb4; --rule: #3a4148; --rule-light: #2a3036;
+  --link: #8db4e8; --code-bg: #1e2226; --note-line: #8db4e8; --caution-line: #d99a3d; --caution-bg: #221d15;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--f-text); font-size: 16.5px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.runhead { max-width: 1040px; margin: 0 auto; padding-block: 14px; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font-size: 13.5px; color: var(--ink-2); }
+.runhead b { color: var(--ink); font-weight: 600; }
+.page { max-width: 1040px; margin: 0 auto; padding-block: 36px 64px; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; }
+@media (max-width: 820px) { .page { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 24px 48px; } }
+.contents { align-self: start; font-size: 14px; }
+.contents h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); margin: 0 0 10px; border: 0; padding: 0; }
+.contents ol { list-style: none; margin: 0; padding: 0; }
+.contents li { padding: 3px 0; border-bottom: 1px solid var(--rule-light); }
+.contents a { color: var(--ink); text-decoration: none; display: flex; gap: 8px; }
+.contents a span { color: var(--ink-2); min-width: 1.4em; font-variant-numeric: tabular-nums; }
+.contents a:hover, .contents a:focus-visible { color: var(--link); outline: none; text-decoration: underline; }
+main { min-width: 0; }
+h1 { font-size: 34px; font-weight: 700; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
+.subtitle { color: var(--ink-2); margin: 0 0 22px; font-size: 17px; }
+.docmeta { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 18px; font-size: 14px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 10px; margin: 0 0 8px; }
+.docmeta dt { color: var(--ink-2); }
+.docmeta dd { margin: 0; }
+main h2 { font-size: 23px; font-weight: 700; margin: 44px 0 10px; padding-top: 10px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; text-wrap: balance; }
+h2 .num { color: var(--ink-2); font-weight: 600; margin-right: 10px; font-variant-numeric: tabular-nums; }
+p, li { max-width: 70ch; }
+a { color: var(--link); }
+code { font-family: var(--f-mono); font-size: .88em; background: var(--code-bg); padding: 1px 4px; border-radius: 2px; }
+pre { font-family: var(--f-mono); font-size: 13.5px; line-height: 1.5; background: var(--code-bg); border: 1px solid var(--rule-light); padding: 12px 14px; overflow-x: auto; margin: 10px 0 18px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+.bn { color: var(--ink-2); user-select: none; display: inline-block; min-width: 3ch; }
+.cm { color: var(--ink-2); }
+figure { margin: 10px 0 18px; }
+figcaption { font-size: 13.5px; color: var(--ink-2); margin-top: -10px; }
+.tbl { overflow-x: auto; margin: 10px 0 18px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+caption { text-align: left; font-size: 13.5px; color: var(--ink-2); padding-bottom: 6px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule-light); vertical-align: top; }
+thead th { border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); font-weight: 600; }
+tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+td:first-child { padding-right: 18px; min-width: 9em; }
+ol.plain { padding-left: 1.3em; }
+ol.plain li { margin: 6px 0; }
+.admon { border-left: 3px solid var(--note-line); padding: 8px 14px; margin: 16px 0; max-width: 74ch; }
+.admon .label { font-weight: 700; text-transform: uppercase; letter-spacing: .05em; font-size: 13px; display: block; margin-bottom: 2px; }
+.admon.caution { border-left-color: var(--caution-line); background: var(--caution-bg); }
+.admon p { margin: 0; }
+footer { margin-top: 56px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-2); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+<div class="runhead"><span><b>mastercam-heidenhain-posts</b> &middot; Claude Code skill</span><span>Reference documentation</span></div>
+
+<div class="page">
+  <nav class="contents" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1"><span>1</span>Introduction</a></li>
+      <li><a href="#s2"><span>2</span>Installation</a></li>
+      <li><a href="#s3"><span>3</span>Ground rules</a></li>
+      <li><a href="#s4"><span>4</span>Workflow</a></li>
+      <li><a href="#s5"><span>5</span>Known pitfalls</a></li>
+      <li><a href="#s6"><span>6</span>TNC output</a></li>
+      <li><a href="#s7"><span>7</span>Cycles and probing</a></li>
+      <li><a href="#s8"><span>8</span>Serial engraving</a></li>
+      <li><a href="#s9"><span>9</span>Replacing a post</a></li>
+      <li><a href="#s10"><span>10</span>Scripts</a></li>
+      <li><a href="#s11"><span>11</span>Repository layout</a></li>
+      <li><a href="#s12"><span>12</span>Safety and legal</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <h1>Mastercam post processors for Heidenhain TNC</h1>
+    <p class="subtitle">Reference for the <code>mastercam-heidenhain-posts</code> skill</p>
+    <dl class="docmeta">
+      <dt>Controls</dt><dd>Heidenhain TNC 530, TNC 620, TNC 640 (Klartext)</dd>
+      <dt>Scope</dt><dd>3-axis, 3+2 (PLANE SPATIAL), 5-axis TCPM, drilling, probing, engraving</dd>
+      <dt>Requires</dt><dd>Claude Code, Python 3, a licensed Mastercam installation</dd>
+      <dt>License</dt><dd>MIT</dd>
+    </dl>
+
+    <h2 id="s1"><span class="num">1</span>Introduction</h2>
+    <p>The skill gives Claude a working method and a collection of known problems for developing Mastercam MP post processors (<code>.pst</code>) for Heidenhain controls. It covers new posts, changes to existing posts, posting errors, and the replacement of vendor posts whose source is not available, by comparing NC output.</p>
+    <p>The content was written from experience on production machines: 5-axis machining centres with A/C and B/C tables and 3-axis machines generated from the same master post. It describes procedures and observed behaviour. It does not reproduce Mastercam or Heidenhain documentation and contains no vendor post code.</p>
+
+    <h2 id="s2"><span class="num">2</span>Installation</h2>
+    <p>Copy the skill directory into a Claude Code skills directory. Claude loads the skill when a task concerns Mastercam posts for Heidenhain machines.</p>
+    <pre><code><span class="cm"># available in all projects of the user</span>
+cp -r skills/mastercam-heidenhain-posts ~/.claude/skills/
+
+<span class="cm"># available in one project only</span>
+cp -r skills/mastercam-heidenhain-posts &lt;project&gt;/.claude/skills/</code></pre>
+    <p>The scripts in <code>scripts/</code> require Python 3 and no additional packages.</p>
+
+    <h2 id="s3"><span class="num">3</span>Ground rules</h2>
+    <p>The skill instructs Claude to follow these rules on every task.</p>
+    <ol class="plain">
+      <li><b>No direct edits of the live post.</b> Changes are made on a local copy. Every replaced version is backed up. Deployment happens only on the user's instruction, after a hash comparison with the last deployed version.</li>
+      <li><b>Posts are built, not edited by hand.</b> A build script creates the post from a base post. Each change is a text replacement that checks how often its source text occurs.</li>
+      <li><b>CRLF line endings are kept.</b> Many editors and shell tools convert them silently.</li>
+      <li><b>Encrypted posts are not decrypted.</b> Their NC output may be used as the specification.</li>
+      <li><b>Changes are verified with NC files.</b> The same part is posted with the old and the new post and the differences are evaluated. New functions are checked in the control's test run graphics and with a dry run.</li>
+      <li><b>Machine data is not assumed.</b> Brake and coolant M functions, rotary axis travel, PLANE mode, probe tool number and free Q/QR parameters are requested from the user or made configurable.</li>
+    </ol>
+
+    <h2 id="s4"><span class="num">4</span>Workflow</h2>
+    <div class="tbl"><table>
+      <caption>Table 1 - Development cycle</caption>
+      <thead><tr><th>Step</th><th>Activity</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>1 Specification</td><td>Collect <code>.h</code> programs of the old post, dialog screenshots (misc values, coolant list, drill cycle list, plane manager) and the required changes.</td><td>List of machine facts and requirements</td></tr>
+        <tr><td>2 Build</td><td>Base post plus build script with settings block and revision log.</td><td>Reproducible post file</td></tr>
+        <tr><td>3 Static check</td><td><code>patch_tool.py --check</code></td><td>No undeclared names, no duplicates, CRLF</td></tr>
+        <tr><td>4 Comparison</td><td>User posts with both posts; <code>nc_diff.py</code> groups the differences.</td><td>Only intended differences remain</td></tr>
+        <tr><td>5 Deployment</td><td><code>safe_deploy.py</code> on the user's instruction</td><td>Live post replaced, backup and hash recorded</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="s5"><span class="num">5</span>Known pitfalls</h2>
+    <p>The following problems caused the largest delays in practice. Details are in <code>references/mp-language.md</code>.</p>
+    <div class="tbl"><table>
+      <caption>Table 2 - MP and engine behaviour</caption>
+      <thead><tr><th>Symptom</th><th>Cause and remedy</th></tr></thead>
+      <tbody>
+        <tr><td>PST LINE error 94</td><td><code>no2str()</code> used in an output line. Assign the text to a string variable first.</td></tr>
+        <tr><td>Wrong branch executed</td><td>A one-line <code>else</code> belongs to the line directly before it. Write branches as bracketed blocks.</td></tr>
+        <tr><td>Empty line missing</td><td>A block without content is dropped. Output a string containing one space.</td></tr>
+        <tr><td>Setting changes format</td><td>Settings and <code>fmt</code> output variables mixed. Keep settings separate, copy before output.</td></tr>
+        <tr><td>"Only single axis rotation allowed"</td><td>The post reads <code>c$</code>. Remove all reads and set <code>rotaxtyp$ = 3</code>, also after every <code>rd_md$</code>.</td></tr>
+        <tr><td>TCPM still active after tool change</td><td>Tool change call 1002 not sent after multiaxis operations. Track a tool-active flag and write the tool end in the tool change.</td></tr>
+        <tr><td>Extra blocks inside an operation</td><td>Null tool changes (1000) also occur within an operation. Evaluate what changed instead of the operation id.</td></tr>
+        <tr><td>Datum shift wrong on tilted planes</td><td><code>tox$ toy$ toz$</code> are plane coordinates. Convert with the matrix rows before <code>CYCL DEF 7</code>.</td></tr>
+        <tr><td>PLANE written for every operation</td><td>Exact comparison of floating point values. Compare with a tolerance of about 0.0005.</td></tr>
+        <tr><td>Output does not reflect the change</td><td>Program produced by another post, or before the copy finished. Print post name and version in the header.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="s6"><span class="num">6</span>TNC output</h2>
+    <p>Example of a 3+2 start as produced by the method described in <code>references/heidenhain-tnc.md</code>:</p>
+    <figure>
+      <pre><code><span class="bn">0</span>  BEGIN PGM 4711 MM
+<span class="bn">1</span>  ; PP-STAND      : 28-10-26
+<span class="bn">2</span>  * - SCHRUPPEN KONTUR
+<span class="bn">3</span>  TOOL CALL 12 Z S9500
+<span class="bn">4</span>  CYCL DEF 32.0 TOLERANZ
+<span class="bn">5</span>  CYCL DEF 32.1 T0.02
+<span class="bn">6</span>  CYCL DEF 7.0 NULLPUNKT
+<span class="bn">7</span>  CYCL DEF 7.1 X+12.5
+<span class="bn">8</span>  PLANE SPATIAL SPA+90 SPB+0 SPC+180 STAY
+<span class="bn">9</span>  L X-20 Y+5 A+90 C+180 FMAX M3</code></pre>
+      <figcaption>Figure 1 - Datum shift before PLANE SPATIAL, rotary axes positioned with the first block</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <caption>Table 3 - Covered output</caption>
+      <thead><tr><th>Area</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td>Program frame</td><td>Block numbers, one comment per block, structure lines (<code>* - TEXT</code>), BLK FORM from the stock definition, limit of two M functions per block where applicable</td></tr>
+        <tr><td>Tool call</td><td><code>TOOL CALL n Z S</code>, DL/DR, probe call with <code>S0</code>, optional <code>TOOL DEF</code>, <code>CYCL DEF 32</code> from operation tolerances</td></tr>
+        <tr><td>3+2 machining</td><td>Origin conversion, <code>CYCL DEF 7</code>, <code>PLANE SPATIAL</code> with STAY or TURN at a park position, datum table, fine corrections from the plane comment</td></tr>
+        <tr><td>5-axis machining</td><td><code>FUNCTION TCPM</code> or <code>M128</code>, reset at tool end, <code>LN</code> blocks with surface normal for radius compensation, rotary solution within travel, linking, multiaxis drilling</td></tr>
+        <tr><td>Rotary brakes</td><td>Release and clamp via canned text, state kept across operations</td></tr>
+        <tr><td>Additional output</td><td>Post version line, tool list with stick-out, Z range per operation, spindle run-up dwell, warnings for F0, S0, maximum speed, duplicate tool numbers</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="s7"><span class="num">7</span>Cycles and probing</h2>
+    <p>The drill cycle list contains 8 standard and 12 custom entries. The engine variable <code>drillcyc$</code> counts from zero: custom cycle 9 corresponds to <code>drillcyc$ = 8</code>. Existing operations store the list position, so a replacement post keeps the cycle order of the old post. Unused positions stop posting with a message.</p>
+    <p>Probing cycles (<code>TCH PROBE 4xx</code>) can be assigned to free custom cycles when no CAM probing option is available. The drill point is the nominal position, the depth is the measuring height, and the dialog labels name the Q parameters. For the probe tool the post writes no spindle start, no coolant and no breakage check.</p>
+    <pre><code><span class="bn">41</span> TOOL CALL 30 Z S0
+<span class="bn">42</span> TCH PROBE 412 BZPKT KREIS INNEN ~
+<span class="bn">  </span>  Q321=+25 ;MITTE 1. ACHSE ~
+<span class="bn">  </span>  Q322=+40 ;MITTE 2. ACHSE ~
+<span class="bn">  </span>  Q262=+30 ;SOLL-DURCHMESSER ~
+<span class="bn">  </span>  ...</code></pre>
+    <div class="admon"><span class="label">Note</span><p>Field labels can be redefined per cycle in the control definition. Verify which engine variable a field supplies by entering distinct test values and posting.</p></div>
+
+    <h2 id="s8"><span class="num">8</span>Serial engraving</h2>
+    <p>A free drill cycle engraves a prefix and a counter value at each drill point. The counter is a QR parameter, so its value is retained after power off. It is incremented after each number and can be raised to a start value. The prefix is output directly; the digits 0 to 9 are label subprograms after <code>M30</code>, scaled with <code>CYCL DEF 26</code> and rotated with <code>CYCL DEF 10</code>. The font is supplied as <code>assets/stroke_font.json</code> (single-stroke, cell 0.6 x 1, characters A-Z, 0-9, <code>- / .</code>).</p>
+    <pre><code><span class="bn">88</span> Q1701 = QR100
+<span class="bn">89</span> Q1710 = INT ( Q1701 / 1000 ) - 10 * INT ( Q1701 / 10000 )
+<span class="bn">90</span> CALL LBL 900
+<span class="bn">97</span> QR100 = QR100 + 1</code></pre>
+
+    <h2 id="s9"><span class="num">9</span>Replacing a post</h2>
+    <p>When the source of the existing post is not available, its NC output serves as the specification. The same program is posted with both posts on the same day; <code>nc_diff.py</code> reduces the differences to patterns. Rules that are not visible directly are derived from the data and confirmed with a second program.</p>
+    <div class="tbl"><table>
+      <caption>Table 4 - Typical difference patterns</caption>
+      <thead><tr><th>Pattern</th><th>Usual cause</th></tr></thead>
+      <tbody>
+        <tr><td><code>X+.2</code> / <code>X+0.2</code></td><td>Format flags</td></tr>
+        <tr><td><code>CC</code>/<code>C</code> / <code>L</code></td><td>Linearisation of very small arcs</td></tr>
+        <tr><td>F after every <code>FMAX</code></td><td>Feed format reset in the post</td></tr>
+        <tr><td>Additional blocks between operations</td><td>Null tool changes within one operation</td></tr>
+        <tr><td>Missing <code>FUNCTION RESET TCPM</code></td><td>Tool change call 1002 not sent</td></tr>
+        <tr><td>Different coolant M functions</td><td>Operations refer to entries of a previous coolant list</td></tr>
+      </tbody>
+    </table></div>
+    <p>Example: in one case neither radius nor arc height explained which arcs the old post output as straight lines. The sweep angle did: all arcs below 0.1 degrees were written as <code>L</code> blocks.</p>
+
+    <h2 id="s10"><span class="num">10</span>Scripts</h2>
+    <div class="tbl"><table>
+      <caption>Table 5 - Scripts in <code>scripts/</code></caption>
+      <thead><tr><th>Script</th><th>Function</th></tr></thead>
+      <tbody>
+        <tr><td><code>patch_tool.py</code></td><td>Text replacement with occurrence check, CRLF-safe file handling. With <code>--check</code>: line endings, duplicate definitions, undeclared identifiers.</td></tr>
+        <tr><td><code>nc_diff.py</code></td><td>Compares two programs without block numbers and date lines and groups the differences by pattern.</td></tr>
+        <tr><td><code>arc_rules.py</code></td><td>Lists arcs output as straight lines by one post, with radius, chord, height and sweep angle.</td></tr>
+        <tr><td><code>safe_deploy.py</code></td><td>Copies a post to its live location only if the live file is unchanged since the last deployment; creates a backup and verifies the copy.</td></tr>
+      </tbody>
+    </table></div>
+    <pre><code>python scripts/nc_diff.py part-old.h part-new.h --show 10
+
+python scripts/safe_deploy.py --live P:/posts/my_tnc.pst --new work/my_tnc.pst \
+    --expect &lt;md5-of-last-deploy&gt; --backup-dir P:/posts/backup</code></pre>
+
+    <h2 id="s11"><span class="num">11</span>Repository layout</h2>
+    <pre><code>skills/mastercam-heidenhain-posts/
+  SKILL.md                     working method, ground rules, pitfalls
+  references/
+    mp-language.md             MP language and engine behaviour
+    workflow.md                build script, settings, backup, deployment
+    matching-old-posts.md      replacing a post by comparing output
+    heidenhain-tnc.md          program frame, tool call, planes, TCPM, brakes
+    drill-and-probe-cycles.md  CYCL DEF, cycle positions, labels, TCH PROBE
+    serial-engraving.md        QR counter and font subprograms
+    nci-and-parameters.md      NCI codes, plane matrix, parameter numbers
+  scripts/                     patch_tool, nc_diff, arc_rules, safe_deploy
+  assets/stroke_font.json      single-stroke engraving font
+  evals/                       test cases with synthetic data</code></pre>
+
+    <h2 id="s12"><span class="num">12</span>Safety and legal</h2>
+    <div class="admon caution"><span class="label">Caution</span><p>Errors in a post processor can cause collisions, damage to the machine and the workpiece, and injury. Check every posted program in the test run graphics of the control and with a dry run, Z axis retracted, before machining. M functions, Q/QR parameters and travel limits shown in this document are examples; use the values from the documentation of your machine.</p></div>
+    <p>The software is provided under the MIT License, without warranty of any kind.</p>
+    <p>Mastercam is a trademark of CNC Software, LLC. HEIDENHAIN and TNC are trademarks of DR. JOHANNES HEIDENHAIN GmbH. This project is independent and not affiliated with, endorsed or sponsored by either company. It contains no Mastercam post code, no MP documentation text, no Heidenhain manual text and no content from encrypted posts. Predefined variable and postblock names are used only as interface names. All examples are anonymised.</p>
+
+    <footer><span>mastercam-heidenhain-posts</span><span>MIT License</span></footer>
+  </main>
+</div>
+</body>
+</html>

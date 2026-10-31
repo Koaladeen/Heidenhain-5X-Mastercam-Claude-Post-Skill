@@ -1,0 +1,5 @@
+28 Oct 2026 11:02:51 AM - Post processor execution initialized.
+28 Oct 2026 11:02:51 AM - Unencrypted input file: C:\posts\my_post.pst
+28 Oct 2026 11:02:51 AM - PST LINE (4565) - Invalid use of function in this context. [94]
+28 Oct 2026 11:02:51 AM - PST LINE (4566) - Invalid use of function in this context. [94]
+28 Oct 2026 11:02:51 AM - Post processor execution failed.

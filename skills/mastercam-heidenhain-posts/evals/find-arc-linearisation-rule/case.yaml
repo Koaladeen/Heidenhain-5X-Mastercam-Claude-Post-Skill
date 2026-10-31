@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: find-arc-linearisation-rule
+expected_outcome: |
+  The answer compares the arcs of both files (ignoring block numbers), finds that the old post writes arcs with a sweep angle below 0.1 degrees as straight L blocks (largest linearised about 0.098, smallest kept about 0.100), shows that radius or arc height do not separate the groups, and gives MP code that switches the move to linear when abs(sweep$) is below the threshold before the motion output.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: plane-origin-datum-shift
+expected_outcome: |
+  The answer explains that tox$/toy$/toz$ are the plane origin in plane coordinates and must be converted into the Top/world frame with the tool plane matrix rows (m1-m3 X axis, m4-m6 Y axis, m7-m9 Z axis) before writing CYCL DEF 7 absolute, writes that conversion, writes CYCL DEF 7 before PLANE SPATIAL ... STAY, and compares origin and angles of consecutive operations with a tolerance (abs difference > ~0.0005) instead of exact equality to decide on a new PLANE setup.

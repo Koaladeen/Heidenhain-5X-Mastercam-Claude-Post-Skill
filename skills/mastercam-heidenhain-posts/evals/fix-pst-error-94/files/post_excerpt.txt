@@ -1,0 +1,12 @@
+# --- excerpt from my_post.pst (lines 4550-4575) ---
+ser_h        : 0     #Character height
+ser_n        : 4     #Digits
+ser_q        : 100   #Counter parameter
+fmt  "QR" 4  ser_q
+
+pser_comment     #Comment line before the serial number
+      ser_h = peck1$
+      ser_n = int(peckclr$)
+      if ser_n < one, ser_n = 4
+      n$, " ; SERIENNUMMER ", *ser_n, " STELLEN AUS ", *ser_q, " - HOEHE " + no2str(ser_h), e$
+      if dwell$ <> zero, n$, " ; DREHUNG " + no2str(dwell$), e$
